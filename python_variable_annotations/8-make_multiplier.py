@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """making multiplier"""
+from typing import Callable
 
-def make_multiplier(multiplier: float):
-    """multiplier"""
-    def inner_function(number: float) -> float:
-        """function"""
+def make_multiplier(multiplier: float) -> Callable[[float], float]:
+    """Creates a multiplier function."""
+    def multiplier_function(number: float) -> float:
         return number * multiplier
-    
-    return inner_function
+
+    return multiplier_function
