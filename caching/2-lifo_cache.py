@@ -22,13 +22,13 @@ class LIFOCache(BaseCaching):
         Discards the last added item if the limit is exceeded.
         """
         if key is not None and item is not None:
-            if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+            if len(self.cache_data) >= BaseCaching.MAX_ITEMS and key not in self.cache_data:
                 if self.last_key_added:
                     del self.cache_data[self.last_key_added]
                     print("DISCARD:", self.last_key_added)
 
-                self.cache_data[key] = item
-                self.last_key_added = key
+            self.cache_data[key] = item
+            self.last_key_added = key
 
     def get(self, key):
         """Retrieves item by key"""
