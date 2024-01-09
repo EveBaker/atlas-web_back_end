@@ -14,7 +14,6 @@ class LIFOCache(BaseCaching):
     def __int__(self):
         """Initalizes LIFOCache"""
         super().__int__()
-        self_last_key_added = None
 
     def put(self, key, item):
         """
