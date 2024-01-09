@@ -24,4 +24,5 @@ def get(self, key):
     Get an item by its key.
     Returns None if the key is none or doesn't exist.
     """
-    return self.cache_data.get(key, None)
+    valuecache = self.cache_data.get(key)
+    return valuecache
