@@ -26,8 +26,9 @@ class LIFOCache(BaseCaching):
                 if self.last_key_added:
                     del self.cache_data[self.last_key_added]
                     print("DISCARD:", self.last_key_added)
-                    self.cache_data[key] = item
-                    self.last_key_added = key
+
+                self.cache_data[key] = item
+                self.last_key_added = key
 
     def get(self, key):
         """Retrieves item by key"""
