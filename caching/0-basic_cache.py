@@ -15,7 +15,7 @@ def put(self, key, item):
     Save an item to the cache
     If the key or item is None, nothing happens.
     """
-    if key is not None and item is not None:
+    if key or item is not None:
         self.cache_data[key] = item
 
 
@@ -24,5 +24,4 @@ def get(self, key):
     Get an item by its key.
     Returns None if the key is none or doesn't exist.
     """
-    valuecache = self.cache_data.get(key)
-    return valuecache
+    return self.cache_data.get(key, None)
