@@ -5,7 +5,7 @@
 from base_caching import BaseCaching
 
 
-class BaseCaching(BaseCaching):
+class BasicCache(BaseCaching):
     """A simple caching system. It stores
     data in a dictionary with no limit."""
 
