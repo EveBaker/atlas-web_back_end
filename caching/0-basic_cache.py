@@ -8,15 +8,14 @@ from base_caching import BaseCaching
 class BasicCache(BaseCaching):
     """A simple caching system. It stores
     data in a dictionary with no limit."""
-    
+
     def put(self, key, item):
         """
         Save an item to the cache
         If the key or item is None, nothing happens.
         """
-        if key or item is not None:
+        if key is not None and item is not None:
             self.cache_data[key] = item
-
 
     def get(self, key):
         """
