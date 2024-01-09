@@ -15,7 +15,7 @@ def put(self, key, item):
     Save an item to the cache
     If the key or item is None, nothing happens.
     """
-    if key is not None and item is not none:
+    if key is not None and item is not None:
         self.cache_data[key] = item
 
 
