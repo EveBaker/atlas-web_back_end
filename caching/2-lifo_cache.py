@@ -21,7 +21,7 @@ class LIFOCache(BaseCaching):
         Saves an item in the cache.
         Discards the last added item if the limit is exceeded.
         """
-        if key is not None and item is not None:
+        if key or item is not None:
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
                 if self_last_key_added:
                     del self.cache_data[self_last_key_added]
