@@ -11,9 +11,10 @@ class LIFOCache(BaseCaching):
     """LIFO caching system that discards
     the last item added when full."""
 
-    def __int__(self):
+    def __init__(self):
         """Initalizes LIFOCache"""
         super().__int__()
+        self_last_key_added = None
 
     def put(self, key, item):
         """
