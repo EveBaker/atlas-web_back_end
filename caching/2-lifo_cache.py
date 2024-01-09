@@ -14,20 +14,20 @@ class LIFOCache(BaseCaching):
     def __init__(self):
         """Initalizes LIFOCache"""
         super().__init__()
-        self_last_key_added = None
+        self.last_key_added = None
 
     def put(self, key, item):
         """
         Saves an item in the cache.
         Discards the last added item if the limit is exceeded.
         """
-        if key or item is not None:
+        if key is not None and item is not None:
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-                if self_last_key_added:
-                    del self.cache_data[self_last_key_added]
-                    print("DISCARD:", self_last_key_added)
+                if self.last_key_added:
+                    del self.cache_data[self.last_key_added]
+                    print("DISCARD:", self.last_key_added)
                     self.cache_data[key] = item
-                    self_last_key_added = key
+                    self.last_key_added = key
 
     def get(self, key):
         """Retrieves item by key"""
