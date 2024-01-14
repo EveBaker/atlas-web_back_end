@@ -62,6 +62,7 @@ def get_db() -> MySQLConnection:
     )
 
 def main():
+    """msqul server"""
     db = get_db()
     cursor = db.cursor()
     cursor.execute("SELECT * FROM users;")
