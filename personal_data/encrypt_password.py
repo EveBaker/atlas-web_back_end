@@ -2,6 +2,7 @@
 """encrypt passwords"""
 import bcrypt
 
+
 def hash_password(password: str) -> bytes:
     """Hashes a password with salt using bcrypt"""
     salt = bcrypt.gensalt()
