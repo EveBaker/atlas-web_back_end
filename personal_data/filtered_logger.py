@@ -47,7 +47,6 @@ def get_logger() -> logging.Logger:
 
 
 def get_db():
-    """returns mysql"""
     db_user = os.getenv('PERSONAL_DATA_DB_USERNAME', 'root')
     db_password = os.getenv('PERSONAL_DATA_DB_PASSWORD', '')
     db_host = os.getenv('PERSONAL_DATA_DB_HOST', 'localhost')
