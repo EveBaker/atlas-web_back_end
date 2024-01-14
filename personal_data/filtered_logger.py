@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from typing import List
 import re
-"""Logger"""
+"""module for filtered logger"""
 
 
 def filter_datum(fields: List[str], redaction: str, message: str,
