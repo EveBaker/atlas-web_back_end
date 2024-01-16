@@ -2,6 +2,7 @@
 """ Module of Index views
 """
 from flask import jsonify, abort
+from api.v1.auth.auth import Auth
 from api.v1.views import app_views
 
 
