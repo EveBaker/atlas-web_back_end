@@ -2,6 +2,9 @@
 """Module of Basic_auth
 """
 from .auth import Auth
+import base64
+from typing import TypeVar
+from models.user import User
 
 
 class BasicAuth(Auth):
@@ -16,7 +19,7 @@ class BasicAuth(Auth):
         return authorization_header[6:]
 
     def decode_base64_authorization_header(
-            self, base64_authorization_header: str) -> str:
+        self, base64_authorization_header: str) -> str:
         """Return the decoded value of a Base64 string."""
         if not isinstance(base64_authorization_header, str):
             return None
