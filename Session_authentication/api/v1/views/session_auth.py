@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 """ sesion auth views
 """
-from typing import TypeVar
-from api.v1.auth.auth import Auth
+from api.v1.views import app_views
 from flask import abort, jsonify, request
 from models.user import User
-import uuid
 import os
+
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
 def login():
