@@ -7,4 +7,5 @@ import os
 
 
 class SessionAuth(Auth):
+    """sessionAuth"""
     pass
