@@ -33,8 +33,7 @@ class Auth:
         """Gets user from request"""
         return None
 
-    def session_auth(self, request=None):
-        """retrieve the value of a cookie from Flask"""
+    def session_cookie(self, request=None):
         if request is None:
             return None
         session_name = os.getenv('SESSION_NAME')
