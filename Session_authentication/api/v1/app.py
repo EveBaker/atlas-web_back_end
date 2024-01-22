@@ -8,6 +8,7 @@ from api.v1.auth.auth import Auth
 from flask import Flask, jsonify, abort, request
 from flask_cors import (CORS, cross_origin)
 from api.v1.auth.basic_auth import BasicAuth
+from api.v1.auth.session_auth.py import SessionAuth
 import os
 
 
@@ -20,6 +21,8 @@ if os.getenv("AUTH_TYPE") == "auth":
     auth = Auth()
 if os.getenv("AUTH_TYPE") == "basic_auth":
     auth = BasicAuth()
+if os.getenv("AUTH_TYPE") == "session_auth":
+    auth = SessionAuth()
 
 
 @app.errorhandler(404)
@@ -56,6 +59,7 @@ def before_request():
         return abort(401)
     if request.current_user is None:
         return abort(403)
+
 
 
 if __name__ == "__main__":
