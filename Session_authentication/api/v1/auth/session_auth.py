@@ -4,6 +4,7 @@
 from typing import TypeVar
 from api.v1.auth.auth import Auth
 from flask import abort, jsonify, request
+from models.user import User
 import uuid
 
 
