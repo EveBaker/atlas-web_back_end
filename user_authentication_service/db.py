@@ -38,14 +38,14 @@ class DB:
 
     def update_user(self, user_id: int, **kwargs) -> None:
         """Updates user atribute"""
-        user = self._session.query(User).get(user_id)
+        user = self.find_user_by(id=user_id)
         if user is None:
-            raise ValueError('User not found')
-        
-        for key, value in kwargs.itens():
+            raise ValueError("User not found")
+
+        for key, value in kwargs.items():
             if hasattr(user, key):
                 setattr(user, key, value)
             else:
                 raise ValueError("Invalid attribute: '{}'".format(key))
-            
-            self._session.commit()
+
+        self._session.commit()
