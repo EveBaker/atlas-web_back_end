@@ -35,3 +35,17 @@ class DB:
         self._session.add(user)
         self._session.commit()
         return user
+
+    def update_user(self, user_id: int, **kwargs) -> None:
+        """Updates user atribute"""
+        user = self._session.query(User).get(user_id)
+        if user is None:
+            raise ValueError('User not found')
+        
+        for key, value in kwargs.itens():
+            if hasattr(user, key):
+                setattr(user, key, value)
+            else:
+                raise ValueError("'invalid attribute: '{}'".format(key))
+            
+            self._session.commit()
