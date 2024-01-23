@@ -48,11 +48,11 @@ class DB:
                 query = query.filter(getattr(User, key) == value)
             else:
                 raise InvalidRequestError
-        
+
         user = query.first()
         if user is None:
             raise NoResultFound
-        
+
         return user
 
     def update_user(self, user_id: int, **kwargs) -> None:
