@@ -7,7 +7,7 @@ from sqlalchemy import Column, Integer, String
 Base = declarative_base()
 
 class User(Base):
-    """User class"""
+    """Userclass"""
     __tablename__= 'users'
 
     id = Column(Integer, primary_key=True)
@@ -15,4 +15,3 @@ class User(Base):
     hashed_password = Column(String(250), nullable=False)
     session_id = Column(String(250), nullable=True)
     reset_token = Column(String(250), nullable=True)
-    
