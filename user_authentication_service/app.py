@@ -27,14 +27,5 @@ def register():
         return jsonify({"message": "email already registered"}), 400
 
 
-def valid_login(self, email: str, password: str) -> bool:
-    """Check if the provided credentials are valid."""
-    user = self._db.find_user_by(email=email)
-    if user is None:
-        return False
-
-    return bcrypt.checkpw(password.encode(), user.hashed_password)
-
-
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
