@@ -16,14 +16,12 @@ class Auth:
 
     def register_user(self, email: str, password: str) -> User:
         """Register a user"""
-        user = self._db._session.query(User).filter(User.email == email).first()
+        user = self._db.find_user_by(email=email)
         if user:
             raise ValueError(f"User {email} already exists")
         
         hashed_password = _hash_password(password)
-        user = User(email=email, hashed_password=hashed_password)
-        self._db._session.add(user)
-        self._db._session.commit()
+        user = self._db.add_user(email, hashed_password)
         return user
 
 def _hash_password(password: str) -> bytes:

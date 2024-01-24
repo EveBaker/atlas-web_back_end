@@ -34,27 +34,17 @@ class DB:
 
     def add_user(self, email: str, hashed_password: str) -> User:
         """Adds user to database"""
-        new_user = User(email=email, hashed_password=hashed_password)
-        self._session.add(new_user)
+        user = User(email=email, hashed_password=hashed_password)
+        self._session.add(user)
         self._session.commit()
-
-        return new_user
+        return user
 
     def find_user_by(self, **kwargs) -> User:
         """finds user by keyward """
         query = self._session.query(User)
-
         for key, value in kwargs.items():
-            if hasattr(User, key):
-                query = query.filter(getattr(User, key) == value)
-            else:
-                raise InvalidRequestError
-
-        user = query.first()
-        if user is None:
-            raise NoResultFound
-
-        return user
+            query = query.filter(getattr(User, key) == value)
+        return query.first()
 
     def update_user(self, user_id: int, **kwargs) -> None:
         """Updates user atribute"""
