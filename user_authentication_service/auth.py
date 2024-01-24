@@ -7,7 +7,8 @@ from user import User
 from db import DB
 from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy.exc import InvalidRequestError
-import uuid
+from uuid import uuid4
+
 
 
 class Auth:
@@ -18,8 +19,11 @@ class Auth:
         self._db = DB()
 
     def _generate_uuid() -> str:
-        """Generate a new UUID"""
-        return str(uuid.uuid4())
+        """ Generate uuid"""
+        UUID = uuid4()
+
+        return str(UUID)
+
 
 
     def register_user(self, email: str, password: str) -> User:
