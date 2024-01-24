@@ -5,6 +5,8 @@
 import bcrypt
 from user import User
 from db import DB
+from sqlalchemy.orm.exc import NoResultFound
+from sqlalchemy.exc import InvalidRequestError
 
 
 class Auth:
@@ -27,14 +29,14 @@ class Auth:
 
 def valid_login(self, email: str, password: str) -> bool:
     """Check if the provided credentials are valid."""
-    try:
-        user = self._db.find_user_by(email=email)
-    except Exception:
+    if email is None or password is None:
         return False
 
-    if user and bcrypt.checkpw(password.encode(), user.hashed_password):
-        return True
-    return False
+    try:
+        user = self._db.find_user_by(email=email)
+        return bcrypt.checkpw(password.encode('utf-8'), user.hashed_password)
+    except NoResultFound:
+        return False
 
 
 def _hash_password(password: str) -> bytes:
