@@ -19,18 +19,23 @@ class Auth:
         user = self._db.find_user_by(email=email)
         if user:
             raise ValueError(f"User {email} already exists")
-        
+
         hashed_password = _hash_password(password)
         user = self._db.add_user(email, hashed_password)
         return user
 
+
 def valid_login(self, email: str, password: str) -> bool:
     """Check if the provided credentials are valid."""
-    user = self._db.find_user_by(email=email)
-    if user is None:
+    try:
+        user = self._db.find_user_by(email=email)
+    except Exception:
         return False
 
-    return bcrypt.checkpw(password.encode(), user.hashed_password)
+    if user and bcrypt.checkpw(password.encode(), user.hashed_password):
+        return True
+    return False
+
 
 def _hash_password(password: str) -> bytes:
     """hashes a pass for storing"""
