@@ -39,9 +39,11 @@ class Auth:
         except NoResultFound:
             return False
 
+
 def _generate_uuid() -> str:
     """Generate a new UUID"""
     return str(uuid.uuid4())
+
 
 def _hash_password(password: str) -> bytes:
     """hashes a pass for storing"""
