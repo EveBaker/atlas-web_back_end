@@ -50,9 +50,9 @@ class Auth:
         return session_id
 
 
-def _generate_uuid() -> str:
-    """Generate a new UUID"""
-    return str(uuid.uuid4())
+    def _generate_uuid() -> str:
+        """Generate a new UUID"""
+        return str(uuid.uuid4())
 
 
 def _hash_password(password: str) -> bytes:
