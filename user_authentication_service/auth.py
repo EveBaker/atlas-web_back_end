@@ -17,6 +17,11 @@ class Auth:
     def __init__(self):
         self._db = DB()
 
+    def _generate_uuid() -> str:
+        """Generate a new UUID"""
+        return str(uuid.uuid4())
+
+
     def register_user(self, email: str, password: str) -> User:
         """Register a user"""
         user = self._db.find_user_by(email=email)
@@ -39,12 +44,6 @@ class Auth:
         except NoResultFound:
             return False
         
-
-
-def _generate_uuid() -> str:
-    """Generate a new UUID"""
-    return str(uuid.uuid4())
-
 
 def _hash_password(password: str) -> bytes:
     """hashes a pass for storing"""
