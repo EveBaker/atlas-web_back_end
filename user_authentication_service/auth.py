@@ -30,11 +30,15 @@ class Auth:
     def valid_login(self, email: str, password: str) -> bool:
         """Check if the provided credentials are valid."""
         if email is None or password is None:
-         return False
+            return False
 
         try:
-            user = self._db.find_user_by(email=email)
-            return bcrypt.checkpw(password.encode('utf-8'), user.hashed_password)
+            user: User = self._db.find_user_by(email=email)
+            passwd: bytes = str.encode(user.hashed_password)
+            valid: bool = bcrypt.checkpw(password.encode('utf-8'),
+                                         passwd)
+
+            return valid
         except NoResultFound:
             return False
 
