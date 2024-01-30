@@ -28,7 +28,7 @@ def get_locale():
 @app.route('/')
 def index():
     """return template"""
-    return render_template('3-index.html')
+    return render_template('3-index.html', gettext=gettext)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
