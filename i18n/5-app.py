@@ -24,7 +24,6 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
-
 @babel.localeselector
 def get_locale():
     """return language"""
