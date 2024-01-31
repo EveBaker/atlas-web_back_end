@@ -16,6 +16,12 @@ users = {
 }
 
 
+@babel.localeselector
+def get_locale():
+    """return language"""
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+
 def get_user():
     """returns user"""
     user_id = request.args.get('login_as')
