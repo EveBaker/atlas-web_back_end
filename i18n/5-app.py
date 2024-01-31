@@ -2,7 +2,7 @@
 """Flask app"""
 
 from flask import Flask, render_template, request
-from flask_babel import Babel, gettext, g
+from flask_babel import Babel, g
 
 
 app = Flask(__name__)
@@ -27,10 +27,14 @@ babel = Babel(app)
 
 
 @babel.localeselector
+@babel.localeselector
 def get_locale():
-    """return language"""
-    return request.args.get('locale', request.accept_languages
-                            .best_match(app.config['LANGUAGES']))
+    """return languages"""
+    locale = request.args.get('locale')
+    if locale:
+        return locale
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+
 
 
 def get_user():
@@ -41,7 +45,6 @@ def get_user():
     else:
         return None
 
-
 @app.before_request
 def before_request():
     g.user = get_user()
@@ -50,7 +53,7 @@ def before_request():
 @app.route("/", methods=["GET"], strict_slashes=False)
 def index():
     """return template"""
-    return render_template('5-index.html', gettext=gettext)
+    return render_template('5-index.html')
 
 
 if __name__ == '__main__':
