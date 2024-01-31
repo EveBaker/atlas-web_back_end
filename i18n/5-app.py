@@ -48,7 +48,7 @@ def before_request():
 @app.route("/", methods=["GET"], strict_slashes=False)
 def index():
     """return template"""
-    return render_template('4-index.html', gettext=gettext)
+    return render_template('5-index.html', gettext=gettext)
 
 
 if __name__ == '__main__':
