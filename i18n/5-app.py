@@ -1,19 +1,12 @@
 #!/usr/bin/env python3
 """Flask app"""
 
-from flask import Flask, render_template, request
-from flask_babel import Babel, gettext, g
+from flask import Flask, render_template, request, g
+from flask_babel import Babel, gettext
 
 
 app = Flask(__name__)
-
-
-class Config:
-    """App Config"""
-    LANGUAGES = ["en", "fr"]
-    BABEL_DEFAULT_LOCALE = "en"
-    BABEL_DEFAULT_TIMEZONE = "UTC"
-
+babel = Babel(app)
 
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
@@ -22,27 +15,19 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
-app.config.from_object(Config)
-babel = Babel(app)
-
-
-@babel.localeselector
-def get_locale():
-    """return language"""
-    return request.args.get('locale', request.accept_languages
-                            .best_match(app.config['LANGUAGES']))
 
 
 def get_user():
-    ''' return the right dictionary '''
-    Id = request.args.get('login_as')
-    if Id and int(Id) in users:
-        return users[int(Id)]
-    else:
-        return None
+    """returns user"""
+    user_id = request.args.get('login_as')
+    if user_id:
+        return users.get(int(user_id))
+    return None
+
 
 @app.before_request
 def before_request():
+    """before request"""
     g.user = get_user()
 
 
@@ -53,4 +38,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run
+    app.run(host='0.0.0.0', port=5000)
