@@ -34,10 +34,12 @@ def get_locale():
 
 
 def get_user():
-    user_id = request.args.get('login_as')
-    if user_id:
-        return users.get(int(user_id))
-    return None
+    ''' return the right dictionary '''
+    Id = request.args.get('login_as')
+    if Id and int(Id) in users:
+        return users[int(Id)]
+    else:
+        return None
 
 
 @app.before_request
