@@ -6,6 +6,18 @@ Module for Cache class.
 import redis
 import uuid
 from typing import Union, Callable
+from functools import wraps
+
+def count_calls(method):
+    """counts calls"""
+    @wraps(method)
+    def wrapper(self, *args, **kwargs):
+        """wrapper method"""
+        method_name = method.__qualname__
+        self.redis.incr(method_name) #increments call count
+        return method(self, *args, **kwargs)
+    return wrapper
+
 
 class Cache:
     """Cache class for redis storage"""
@@ -15,6 +27,7 @@ class Cache:
         self._redis.flushdb()
     
 
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """store data in redis"""
         key = str(uuid.uuid4())
