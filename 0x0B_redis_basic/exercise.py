@@ -8,13 +8,13 @@ import uuid
 from typing import Union, Callable
 from functools import wraps
 
-def count_calls(method):
+def count_calls(method: Callable) -> Callable:
     """counts calls"""
     @wraps(method)
     def wrapper(self, *args, **kwargs):
         """wrapper method"""
         method_name = method.__qualname__
-        self.redis.incr(method_name) #increments call count
+        self._redis.incr(method_name) #increments call count
         return method(self, *args, **kwargs)
     return wrapper
 
