@@ -30,7 +30,7 @@ class Cache:
     
     def get_str(self, key: str) -> str:
         """gets str"""
-        return self._redit.get(key).decode("utf-8") 
+        return self._redis.get(key).decode("utf-8") 
     
     def get_int(self, key:str) -> int:
         """Parametrized get int"""
