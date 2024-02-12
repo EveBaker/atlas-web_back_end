@@ -1,6 +1,6 @@
 -- top band
 
-SELECT orgin AS orgin, SUM(nb_fans) AS nb_fans
+SELECT origin AS origin, SUM(nb_fans) AS nb_fans
 FROM metal_bands
-GROUP BY orgin
+GROUP BY origin
 ORDER BY nb_fans DESC;
