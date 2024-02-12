@@ -7,4 +7,4 @@ def list_all(mongo_collection) -> list:
     documents: list = []
     for doc in mongo_collection.find():
         documents.append(doc)
-        return documents
+    return documents
