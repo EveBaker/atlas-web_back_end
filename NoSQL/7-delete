@@ -1,0 +1,2 @@
+// Delete items
+debugger.school.deleteMany({"name": "Holberton school"})
