@@ -2,9 +2,9 @@
 """ List documents """
 import pymongo
 
-def list_all(mongo_collection):
+def list_all(mongo_collection) -> list:
     """lists all documents in MongoDB"""
-    documents = []
+    documents: list = []
     for doc in mongo_collection.find():
         documents.append(doc)
         return documents
