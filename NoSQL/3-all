@@ -1,0 +1,2 @@
+// Lists school documents
+db.school.find();
