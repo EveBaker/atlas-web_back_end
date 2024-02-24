@@ -12,10 +12,10 @@ module.exports = function calculateNumber(type, a, b) {
         case 'SUBTRACT':
             return Math.round(aNum) - Math.round(bNum);
         case 'DIVIDE':
-            const bNum = Math.round(bNum);
-            if (bNum === 0) return 'ERROR';
-            return Math.round(aNum) / bNum;
+            const roundedB = Math.round(bNum);
+            if (roundedB === 0) return 'Error';
+            return Math.round(aNum) / roundedB;
         default:
-            throw new Error("Invalid type")
+            throw new Error('Invalid type');
     }
 };
