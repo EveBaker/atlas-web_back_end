@@ -1,6 +1,6 @@
 module.exports = function calculateNumber(a, b = 0) {
-    const aNum = number(a);
-    const bNum = number(b);
+    const aNum = Number(a);
+    const bNum = Number(b);
 
     if (Number.isNaN(aNum) || Number.isNaN(bNum)) {
         throw new TypeError('Parameters must be numbers');
