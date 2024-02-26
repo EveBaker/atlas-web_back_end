@@ -6,7 +6,7 @@ function countStudents(path) {
   }
 
   const data = fs.readFileSync(path, 'utf8');
-  const students = data.trim().split('\n').slice(1); // Directly omit header
+  const students = data.trim().split('\n').slice(1);
   const studentsByField = {};
 
   students.forEach((student) => {
