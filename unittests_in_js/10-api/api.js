@@ -28,12 +28,8 @@ app.listen(PORT, () => {
     app.get('/cart/:id(\\d+)', (req, res) => {
         const { id } = req.params;
         res.send(`Payment methods for cart ${id}`);
-    });
-    
-    const PORT = 7865;
-    app.listen(PORT, () => {
-        console.log(`API available on localhost port ${PORT}`);
-    });
+      });
 });
+
 
 module.exports = app;
