@@ -16,19 +16,19 @@ app.get('/available_payments', (req, res) => {
     });
 });
 
-app.post('/login', (res, req) => {
+app.post('/login', (req, res) => {
     const { userName } = req.body;
     res.send(`Welcome ${userName}`);
+});
+
+app.get('/cart/:id(\\d+)', (req, res) => {
+    const { id } = req.params;
+    res.send(`Payment methods for cart ${id}`);
 });
 
 const PORT = 7865;
 app.listen(PORT, () => {
     console.log('API avalable on localhost port ${PORT}');
-
-    app.get('/cart/:id(\\d+)', (req, res) => {
-        const { id } = req.params;
-        res.send(`Payment methods for cart ${id}`);
-      });
 });
 
 
