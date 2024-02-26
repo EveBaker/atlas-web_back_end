@@ -24,11 +24,9 @@ function countStudents(path) {
         fields[student.field].push(student.firstName);
       });
 
-      for (const field in fields) {
-        if (fields.hasOwnProperty(field)) {
-          console.log(`Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`);
-        }
-      }
+      Object.keys(fields).forEach((field) => {
+        console.log(`Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`);
+      });
     })
     .catch(() => {
       throw new Error('Cannot load the database');
