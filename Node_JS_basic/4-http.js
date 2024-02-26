@@ -4,10 +4,8 @@ const http = require('http');
 const app = http.createServer((req, res) => {
   // Set headers
   res.writeHead(200, { 'Content-Type': 'text/plain' });
-
   // Send
-  res.end('Hello Holberton School!\n');
-});
+  res.end('Hello Holberton School!');
 
 // Listen on port
 app.listen(1245);
