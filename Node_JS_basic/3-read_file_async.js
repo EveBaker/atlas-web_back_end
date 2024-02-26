@@ -29,8 +29,8 @@ function countStudents(path) {
       });
     })
     .catch(() => {
-      throw new Error('Cannot load the database');
-    });
+        return Promise.reject(new Error('Cannot load the database'));
+      });
 }
 
 module.exports = countStudents;
