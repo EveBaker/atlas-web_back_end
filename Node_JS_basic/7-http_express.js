@@ -10,10 +10,10 @@ app.get('/', (req, res) => {
 
 app.get('/students', async (req, res) => {
   try {
-    const students = await countStudents(process.argv[2]);
+    const students = await countStudents(req.query.database);
     res.send(`This is the list of our students\n${students}`);
   } catch (error) {
-    res.status(500).send(error.message);
+    res.status(500).send('Cannot load the database');
   }
 });
 
